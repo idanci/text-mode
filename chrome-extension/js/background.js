@@ -9,7 +9,7 @@
 
 	Communication
 		* Background.js <-> Options.js	via localStorage
-		* Background.js <-> Tab.js		via Message Passing 
+		* Background.js <-> Tab.js		via Message Passing
 										(http://developer.chrome.com/extensions/messaging.html)
 
 *************************************************/
@@ -194,7 +194,7 @@ function setListeners() {
 
 				// Gmail breaks if we block IFRAMES so we block at TAB level (in tab.js)
 				//types: ["sub_frame", "object"]
-				types: ["object"] 
+				types: ["object"]
 					// Possible values:
 					// "main_frame", "sub_frame", "stylesheet", "script",
 					// "image", "object", "xmlhttprequest", "other"

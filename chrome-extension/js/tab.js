@@ -119,7 +119,7 @@ function setBodyType() {
 //------------------------------------------------
 function replaceHolderImgs()
 {
-	if(isEnabled 
+	if(isEnabled
 		&&
 		(replacementImageID === 0) )
 	{
@@ -127,7 +127,7 @@ function replaceHolderImgs()
 		var holderTextImg = "holder.js/%W%x%H%/text:%T%";
 		var holderBgImg = "url(?holder.js/%W%x%H%/) no-repeat";
 		var imgs = document.getElementsByTagName('img');
-		
+
 		for (var i=0; i<imgs.length; i++) {
 
 			var imgEl = imgs[i];
@@ -138,19 +138,19 @@ function replaceHolderImgs()
 			if (imgAlt) {
 				// if (styleW && styleH){
 					// imgEl.src = holderTextImg.split("%W%").join(styleW).split("%H%").join(styleH).split("%T%").join(imgAlt);
-					// imgEl.style.backgroundImage = "";									
+					// imgEl.style.backgroundImage = "";
 				// }
 				// else {
 					imgEl.src = "";
-					imgEl.style.backgroundImage = holderBgImg.split("%W%").join(styleW).split("%H%").join(styleH);				
+					imgEl.style.backgroundImage = holderBgImg.split("%W%").join(styleW).split("%H%").join(styleH);
 				// }
 			}
 			else {
 				imgEl.src = holderImg.split("%W%").join(styleW).split("%H%").join(styleH);
-				imgEl.style.backgroundImage = "";				
+				imgEl.style.backgroundImage = "";
 			}
 		}
-		Holder.run();		
+		Holder.run();
 	}
 }
 

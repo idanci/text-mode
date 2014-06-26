@@ -14,7 +14,7 @@
 
 
 //-----------------------------------------------------------------------------
-// [OPTIONS] IMAGE REPLACEMENT 
+// [OPTIONS] IMAGE REPLACEMENT
 
 // Add listeners
 
@@ -56,9 +56,9 @@ $("#desat").prop('checked', getIsDesaturated());
 // $("#desat").addEventListener('click', handleDesaturateClick);
 $("#desat").click(function() {
     var $this = $(this);
-    // $this will contain a reference to the checkbox   
+    // $this will contain a reference to the checkbox
     if ($this.is(':checked')) {
-        // the checkbox was checked 
+        // the checkbox was checked
 	    setIsDesaturated(true);
     } else {
         // the checkbox was unchecked
@@ -80,9 +80,9 @@ function setUseWhiteBg(value) {
 $("#whiteBg").prop('checked', getUseWhiteBg());
 $("#whiteBg").click(function() {
     var $this = $(this);
-    // $this will contain a reference to the checkbox   
+    // $this will contain a reference to the checkbox
     if ($this.is(':checked')) {
-        // the checkbox was checked 
+        // the checkbox was checked
 	    setUseWhiteBg(true);
     } else {
         // the checkbox was unchecked
