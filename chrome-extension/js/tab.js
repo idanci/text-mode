@@ -125,7 +125,6 @@ function replaceHolderImgs()
 				// If it is something we want to redirect then set a data attribute so we know its allready been changed
 				// Set that attribute to it original src in case we need to know what it was later
 				event.srcElement.dataset['redirected'] = event.srcElement.src;
-
 				event.srcElement.src = getBlankImg();
 				event.srcElement.style.backgroundImage = "url('"+getBgImg()+"')";
 		}
