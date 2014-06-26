@@ -16,7 +16,6 @@ var replacementImageID = 0;
 function getMode(response) {
 	isEnabled = (response.enableAll === "true");
 	replacementImageID = parseInt(response.replacementImageID);
-	isDesaturated = (response.isDesaturated === "true");
 	useWhiteBg = (response.useWhiteBg === "true");
 
 	this.setBodyType();
@@ -48,7 +47,6 @@ var body_class_text_mode_img = "__text_mode_img_%ID%__";
 var body_class_text_mode_img_curr = "";
 
 var body_class_text_mode_white_bg = "__text_mode_white_bg__";
-var body_class_text_mode_desaturated = "__text_mode_desaturated__";
 
 function setBodyType() {
 	var body = document.getElementsByTagName("body")[0];
@@ -68,11 +66,6 @@ function setBodyType() {
 				// CSS: Image Replacement
 				if (body.className.indexOf(body_class_text_mode_img_curr) < 0)
 					body.className += " " + body_class_text_mode_img_curr;
-
-				// CSS: Desaturated
-				if (isDesaturated)
-					if (body.className.indexOf(body_class_text_mode_desaturated) < 0)
-						body.className += " " + body_class_text_mode_desaturated;
 
 				// CSS: White Bg
 				if (useWhiteBg)

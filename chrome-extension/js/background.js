@@ -50,13 +50,6 @@ function toggleIsEnableAll()
 }
 
 //------------------------------------------------
-// Desaturation
-//------------------------------------------------
-function getIsDesaturated() {
-	return !(localStorage['is_desaturated'] === "false");
-}
-
-//------------------------------------------------
 // White BG
 //------------------------------------------------
 function getUseWhiteBg() {
@@ -67,10 +60,7 @@ function getUseWhiteBg() {
 // Replacement Image
 //------------------------------------------------
 function getReplacementImageID() {
-	var currImageReplacementDefault = 1;
-	var currImageReplacementID = localStorage["replacement_image"] || currImageReplacementDefault;
-
-	return currImageReplacementID;
+	return 1;
 }
 function getReplacementImage() {
 	var currImageReplacementID = getReplacementImageID();
@@ -95,7 +85,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.method === "getMode"){
 		response.enableAll = getIsEnableAll().toString();
 		response.replacementImageID = getReplacementImageID().toString();
-		response.isDesaturated = getIsDesaturated().toString();
 		response.useWhiteBg = getUseWhiteBg().toString();
 	}
 	if (request.refresh === "true"){
@@ -133,29 +122,21 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 function setListeners() {
 	var isEnabled = getIsEnableAll();
 
-	console.log("setListeners: getReplacementImageID=" + getReplacementImageID());
-
 	if (isEnabled
 		&&
 		(getReplacementImageID() >= 0) )
 	{
 		// Sets the listeners only if the extension is enabled for the current context
 		chrome.webRequest.onBeforeRequest.addListener(
-			// listener
 			onBeforeRequestImage,
 			// filters
 			{
-				urls: [
-					"http://*/*",
-					"https://*/*"
-				],
-
+				urls: [ "http://*/*", "https://*/*"],
 				// Possible values:
 				// "main_frame", "sub_frame", "stylesheet", "script",
 				// "image", "object", "xmlhttprequest", "other"
 				types: ["image"]
 			},
-			// extraInfoSpec
 			["blocking"]
 		);
 		chrome.webRequest.onBeforeRequest.addListener(
@@ -175,13 +156,11 @@ function setListeners() {
 					// "main_frame", "sub_frame", "stylesheet", "script",
 					// "image", "object", "xmlhttprequest", "other"
 			},
-			// extraInfoSpec
 			["blocking"]
 		);
 	}
 	else
 	{
-		// Remove listeners
 		chrome.webRequest.onBeforeRequest.removeListener( onBeforeRequestImage );
 		chrome.webRequest.onBeforeRequest.removeListener( onBeforeRequestObject );
 	}
