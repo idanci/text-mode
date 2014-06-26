@@ -14,8 +14,6 @@
 
 
 //-----------------------------------------------------------------------------
-// [OPTIONS] IMAGE REPLACEMENT
-
 // Add listeners
 
 ii = document.querySelectorAll('#imageReplacement input');
@@ -36,7 +34,6 @@ function handleImageReplacementClick() {
     $(this).parent().addClass('selected').siblings().removeClass('selected');
 }
 
-// Oh, you silly CSS, starting indexes with 1 instead of 0...
 currImageReplacementCSS = parseInt(currImageReplacement) + 1;
 $("#imageReplacement li:nth-child("+currImageReplacementCSS+")").addClass('selected');
 
@@ -53,7 +50,6 @@ function setIsDesaturated(value) {
 }
 
 $("#desat").prop('checked', getIsDesaturated());
-// $("#desat").addEventListener('click', handleDesaturateClick);
 $("#desat").click(function() {
     var $this = $(this);
     // $this will contain a reference to the checkbox
@@ -89,41 +85,3 @@ $("#whiteBg").click(function() {
 	    setUseWhiteBg(false);
     }
 });
-
-
-
-//-----------------------------------------------------------------------------
-// DELETE ME
-// old code sample
-
-// // Saves options to localStorage.
-// function save_options() {
-//   var select = document.getElementById("color");
-//   var color = select.children[select.selectedIndex].value;
-//   localStorage["favorite_color"] = color;
-
-//   // Update status to let user know options were saved.
-//   var status = document.getElementById("status");
-//   status.innerHTML = "Options Saved.";
-//   setTimeout(function() {
-//     status.innerHTML = "";
-//   }, 750);
-// }
-
-// // Restores select box state to saved value from localStorage.
-// function restore_options() {
-//   var favorite = localStorage["favorite_color"];
-//   if (!favorite) {
-//     return;
-//   }
-//   var select = document.getElementById("color");
-//   for (var i = 0; i < select.children.length; i++) {
-//     var child = select.children[i];
-//     if (child.value == favorite) {
-//       child.selected = "true";
-//       break;
-//     }
-//   }
-// }
-// document.addEventListener('DOMContentLoaded', restore_options);
-// document.querySelector('#save').addEventListener('click', save_options);

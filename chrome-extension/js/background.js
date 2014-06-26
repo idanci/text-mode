@@ -22,25 +22,10 @@ var iconOff = "../imgs/iconOff.png";
 
 // Called when the user clicks on the browser action.
 chrome.browserAction.onClicked.addListener(function(tab) {
-
 	toggleIsEnableAll();
-
 	setListeners();
 	updateUI();
 	refreshTab(tab.id);
-
-		// chrome.tabs.executeScript(
-		// 	tab.id,
-		// 	// {code:"document.body.style.background='red !important'"},
-		// 	{code:"-webkit-filter: grayscale(100%) !important;"},
-		// 	null
-		// 	);
-		// chrome.tabs[tab.id].insertCSS(
-		// 	tab.id,
-		// 	// {code:"document.body.style.background='red !important'"},
-		// 	{code:"body {-webkit-filter: grayscale(100%) !important;}"},
-		// 	null
-		// 	);
 });
 
 function updateUI() {
@@ -49,9 +34,6 @@ function updateUI() {
 	chrome.browserAction.setIcon({path:iconCurr});
 }
 
-//------------------------------------------------
-// Refresh
-//------------------------------------------------
 function refreshTab(tabId) {
 	chrome.tabs.reload(tabId);
 }
@@ -127,7 +109,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 		updateUI();
 	}
 
-    sendResponse(response); // snub them.
+    sendResponse(response);
 });
 
 //------------------------------------------------
