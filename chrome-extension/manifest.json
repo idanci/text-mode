@@ -3,11 +3,7 @@
   "version": "0.5.0",
   "manifest_version": 2,
   "description": "Browse the web without distractions via simple text based pages.",
-
-  "icons": {
-    "16": "icons/icon_16x16.png"
-  },
-
+  "icons": { "16": "icons/icon_16x16.png" },
   "permissions": [
     "tabs",
     "webRequest",
@@ -15,15 +11,12 @@
     "http://*/*",
     "https://*/*"
   ],
-
   "options_page": "html/options.html",
-
   "background": {
     "scripts": [
       "js/background.js"
     ]
   },
-
   "content_scripts": [
     {
       "matches": [
@@ -31,20 +24,15 @@
         "http://*/*",
         "https://*/*"
       ],
-
       "css": [
         "css/tab.css"
       ],
-      "__css_comment": "These are injected in the order they appear in this array, before any DOM is constructed or displayed for the page.",
-
       "js": [
         "js/vendor/parseuri.js",
         "js/vendor/holder-2.2.min.js",
         "js/tab.js"
       ],
       "run_at": "document_start",
-      "__js_comment": "In the case of 'document_end', the files are injected immediately after the DOM is complete, but before subresources like images and frames have loaded. In the case of 'document_start', the files are injected after any files from css, but before any other DOM is constructed or any other script is run.",
-
       "all_frames": true
     }
   ],

@@ -1,8 +1,4 @@
-
 /*************************************************
-
-	OPTIONS.js
-	------
 	This code is executed on the OPTIONS.html page
 	It runs in the context of the extension Options page (not the page, not the background)
 	Is fired when the user opens the extension options page
@@ -11,7 +7,6 @@
 		* Options.js <-> Background.js via localStorage
 
 *************************************************/
-
 
 //-----------------------------------------------------------------------------
 // Add listeners
@@ -25,7 +20,6 @@ for(var i=0, max = ii.length; i<max; i++) {
 // Get image # to use
 var currImageReplacementDefault = 0;
 var currImageReplacement = localStorage["replacement_image"] || currImageReplacementDefault;
-//console.log("currImageReplacement: "+currImageReplacement);
 
 // Save value on Local Storage
 function handleImageReplacementClick() {
@@ -61,7 +55,6 @@ $("#desat").click(function() {
 	    setIsDesaturated(false);
     }
 });
-
 
 //-----------------------------------------------------------------------------
 // [OPTIONS] White BG

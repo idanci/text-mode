@@ -1,8 +1,4 @@
-
 /*************************************************
-
-	BG.js
-	------
 	This code is executed on the BACKGROUND
 	It runs in the context of the extension (not the page)
 	Is fired when the extension loads and it's always running
@@ -10,8 +6,6 @@
 	Communication
 		* Background.js <-> Options.js	via localStorage
 		* Background.js <-> Tab.js		via Message Passing
-										(http://developer.chrome.com/extensions/messaging.html)
-
 *************************************************/
 
 //------------------------------------------------
