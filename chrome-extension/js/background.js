@@ -4,7 +4,6 @@
 	Is fired when the extension loads and it's always running
 
 	Communication
-		* Background.js <-> Options.js	via localStorage
 		* Background.js <-> Tab.js		via Message Passing
 *************************************************/
 
@@ -50,18 +49,12 @@ function toggleIsEnableAll()
 }
 
 //------------------------------------------------
-// White BG
-//------------------------------------------------
-function getUseWhiteBg() {
-	return !(localStorage['use_white_bg'] === "false");
-}
-
-//------------------------------------------------
 // Replacement Image
 //------------------------------------------------
 function getReplacementImageID() {
 	return 1;
 }
+
 function getReplacementImage() {
 	var currImageReplacementID = getReplacementImageID();
 	var currImageReplacement = chrome.extension.getURL("imgs/bg/bg_"+currImageReplacementID+".png");
@@ -85,7 +78,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.method === "getMode"){
 		response.enableAll = getIsEnableAll().toString();
 		response.replacementImageID = getReplacementImageID().toString();
-		response.useWhiteBg = getUseWhiteBg().toString();
 	}
 	if (request.refresh === "true"){
 		setListeners();

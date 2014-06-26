@@ -16,7 +16,6 @@ var replacementImageID = 0;
 function getMode(response) {
 	isEnabled = (response.enableAll === "true");
 	replacementImageID = parseInt(response.replacementImageID);
-	useWhiteBg = (response.useWhiteBg === "true");
 
 	this.setBodyType();
 }
@@ -46,14 +45,11 @@ var body_class_plain_text = "__plain_text__";
 var body_class_text_mode_img = "__text_mode_img_%ID%__";
 var body_class_text_mode_img_curr = "";
 
-var body_class_text_mode_white_bg = "__text_mode_white_bg__";
-
 function setBodyType() {
 	var body = document.getElementsByTagName("body")[0];
 	body_class_text_mode_img_curr = body_class_text_mode_img.replace("%ID%", replacementImageID);
 
 	if(body) {
-		// If the page is not whitelisted (now only options.html)
 		if (body.className.indexOf(body_class_whitelisted) < 0)
 		{
 			if (body.className.indexOf(body_class_ready) < 0)
@@ -62,15 +58,9 @@ function setBodyType() {
 			if (isEnabled) {
 				if (body.className.indexOf(body_class_plain_text) < 0)
 					body.className += " " + body_class_plain_text;
-
 				// CSS: Image Replacement
 				if (body.className.indexOf(body_class_text_mode_img_curr) < 0)
 					body.className += " " + body_class_text_mode_img_curr;
-
-				// CSS: White Bg
-				if (useWhiteBg)
-					if (body.className.indexOf(body_class_text_mode_white_bg) < 0)
-						body.className += " " + body_class_text_mode_white_bg;
 			}
 		}
 	}
